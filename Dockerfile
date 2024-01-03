@@ -11,6 +11,7 @@ ENV SERVICE_NGINX_CLIENT_MAX_BODY_SIZE="50m"
 COPY conf/ /opt/docker/
 
 RUN set -x \
+    && sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories \
     && apk-install \
         mysql mysql-client pwgen \
     && docker-run-bootstrap \
